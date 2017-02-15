@@ -66,8 +66,26 @@
     
     //Variables and Arrays
     $suits = "cdhs";
-    $players = array("Hannah", "John", "Alex", "Pam");
-    $scores = array("Hannah" => 0, "John" => 0, "Alex" => 0, "Pam" => 0);
+    $state=array( //List
+        "Players"=>array( //Object
+            "Name"=>"Hanna",
+            "Score"=>0
+            ),
+        ),
+        "Winners"=>array(1,2);
+        );
+        
+    
+    for($i=0;$i<sizeof($state);$i++){
+        $player=$state[$i];
+        
+    }
+    foreach($state as $mcmkdn){
+        echo $player["Name"];
+        echo $player["Score"];
+    }    
+    $players = array("Hannah", "John", "Alex", "Johna The Impaler");
+    $scores = array("Hannah" => 0, "John" => 0, "Alex" => 0, "Johna The Impaler" => 0);
     $hands = array($players[0] => array(), $players[1] => array(), $players[2] => array(), $players[3] => array());
     
     newGame();
