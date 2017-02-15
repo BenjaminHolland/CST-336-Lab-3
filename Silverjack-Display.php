@@ -1,6 +1,8 @@
 <?PHP
     include 'Silverjack-Library.php';
     function adapt($rawState){
+        return $rawState;
+        /*
         $state=array(
             'players'=>array(
                 array(
@@ -26,7 +28,7 @@
             'winners'=>array(1,2,3,4)
             );   
         return $state;
-            
+          */  
     }
     function display(){
         $state=adapt(run());

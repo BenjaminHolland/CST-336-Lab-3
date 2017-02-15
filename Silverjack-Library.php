@@ -63,5 +63,6 @@
             if($state["players"][$i]["score"] == $max)
                 array_push($state["winners"], $i);
         }
+        return $state;
     }
 ?>
