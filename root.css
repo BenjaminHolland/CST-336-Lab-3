@@ -1,0 +1,29 @@
+.Table{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+.Winner{
+    background-color: green;
+}
+.NameItem{
+    min-width:30%;
+    flex: 1 1 max-content;
+}
+.ScoreItem{
+    text-align: center;
+    flex: 1 1 fill;
+}
+.TableRow{
+    width: 100%;
+    display: flex;
+    flex-flow:row;
+    align-items: flex-start;
+}
+.TableItem{
+    display: flex ;
+    flex-flow: row nowrap;
+    
+
+    
+}
