@@ -18,15 +18,18 @@
             $suits = "CDHS";
             for($i = 0; $i < rand(4, 6); $i++) //Runs the number of cards every person will recieve
             {
-                //Checks to make sure there are so duplicate cards in a players hand
+                //Checks to make sure there are no duplicate cards in players hands
                 do{
                     $repeat = false;
                     $cardValue = rand(1, 13);
                     $holeCard = $suits[rand(0, strlen($suits) - 1)] . $cardValue;
-                    for($card = 0; $card < $i; $card++)
+                    for($currentPlayer = 0; $currentPlayer < sizeof($state["players"]); $currentPlayer++)
                     {
-                        if($state["players"][$player]["hand"][$card] == $holeCard)
-                            $repeat = true;
+                        for($card = 0; $card < sizeof($state["players"][$currentPlayer]["hand"]); $card++)
+                        {
+                            if($state["players"][$currentPlayer]["hand"][$card] == $holeCard)
+                                $repeat = true;
+                        }
                     }
                 } while($repeat == true);
                 
