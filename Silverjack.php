@@ -14,11 +14,11 @@
     <body>
         <div id="silverjack_Board">
             <!--Silverjack Display Stuff Here-->
-            <table>
+
             <?PHP
                 display();
             ?>
-            </table>
+
         </div>
         <div>
             <div id="Play_Again_Button">
