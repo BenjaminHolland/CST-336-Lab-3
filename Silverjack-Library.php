@@ -41,15 +41,15 @@
     }
     function findWinners($state)
     {
-        $maxScore = 0;
+        $bestScore = 0;
         for($person = 0; $person < sizeof($state["players"]); $person++) //Finds the largest score
         {
-            if($state["players"][$person]["score"] >= $maxScore)
-                $maxScore = $state["players"][$person]["score"];
+            if($state["players"][$person]["score"] >= $bestScore && $state["players"][$person]["score"] <= 42)
+                $bestScore = $state["players"][$person]["score"];
         }
         for($person = 0; $person < sizeof($state["players"]); $person++) //Finds who has a score matching the largest score
         {
-            if($state["players"][$person]["score"] == $maxScore)
+            if($state["players"][$person]["score"] == $bestScore)
                 array_push($state["winners"], $person);
         }
         return $state;
