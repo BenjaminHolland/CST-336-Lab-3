@@ -21,9 +21,8 @@
 
         </div>
         <div>
-            <div id="Play_Again_Button">
-               <!--Button should just refresh page-->         
-            </div>
+            <a href="Silverjack.php" class="btn">Play Again</a>
+            
         </div>
     </body>
 </html>
