@@ -42,12 +42,12 @@
     function findWinners($state)
     {
         $bestScore = 0;
-        for($person = 0; $person < sizeof($state["players"]); $person++) //Finds the largest score
+        for($person = 0; $person < sizeof($state["players"]); $person++) //Finds the largest score under or equal to 42
         {
             if($state["players"][$person]["score"] >= $bestScore && $state["players"][$person]["score"] <= 42)
                 $bestScore = $state["players"][$person]["score"];
         }
-        for($person = 0; $person < sizeof($state["players"]); $person++) //Finds who has a score matching the largest score
+        for($person = 0; $person < sizeof($state["players"]); $person++) //Finds who has a score matching the best score
         {
             if($state["players"][$person]["score"] == $bestScore)
                 array_push($state["winners"], $person);
