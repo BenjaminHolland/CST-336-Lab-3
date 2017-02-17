@@ -12,17 +12,16 @@
         ?>
     </head>
     <body>
-        <div id="silverjack_Board">
             <!--Silverjack Display Stuff Here-->
 
             <?PHP
                 display();
             ?>
 
-        </div>
-        <div>
-            <a href="Silverjack.php" class="btn">Play Again</a>
+        <div class="btnHolder">
             
+        <a href="Silverjack.php" class="btn">Play Again</a>
+
         </div>
     </body>
 </html>
