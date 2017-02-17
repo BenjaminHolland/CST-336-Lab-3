@@ -1,9 +1,11 @@
 <?PHP
     include 'Silverjack-Library.php';
+    
     function adapt($rawState){
        // var_dump($rawState);
         return $rawState;
     }
+    
     function getCardImagePath($card){
         $path="";
         switch(substr($card,0,1)){
@@ -25,57 +27,101 @@
         $number=substr($card,1);
         return "img/cards/$suit/$number.png";
     }
-    function displayPlayer($player,$isWinner){
-        if($isWinner){
-            echo "<div class='TableRow Winner'>"; 
-        }else{
-            echo "<div class='TableRow'>";
+
+    $DISPLAY_DEBUG=false;
+    function displayDebugInfo($state){
+        global $DISPLAY_DEBUG;
+        if($DISPLAY_DEBUG){
+            $result = json_encode($state);
+            echo "<script>
+            var str=JSON.stringify($result,null,2);
+            window.alert(str)</script>";
         }
-        echo 
-            "<div class='TableItem NameItem' column-header='Name'>".
-            $player['name'].
-            "</div>";
-            
-            $pad=6-sizeof($player['hand']);
-            
-        foreach($player['hand'] as $card){
-            echo 
-                "<div class='TableItem CardItem'>".
-                "<img src='".getCardImagePath($card)."'/>".
-                "</div>";
+    }
+    
+
+    
+    
+    
+    
+    function isWinner($state,$playerIdx){
+        if(in_array($playerIdx,$state['winners'])){
+                return true;
+            }else{
+                return false;
+            }
+    }
+    function displayCard($card){
+        $src=getCardImagePath($card);
+        echo "<img src='$src'/>";
+    }
+    
+    function displayHand($hand){
+        foreach($hand as $card){
+            displayCard($card);
         }
-        for($pad;$pad>=0;$pad--){
-            "<div class='TableItem CardItem'>".
-                "<img src='"."img/cards/card_back.png"."'/>".
-                "</div>";
+    }
+    
+    function displayScoreColumn($state){
+        echo "<div class='ScoreColumn'>";
+        for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
+            $isWinner=isWinner($state,$playerIdx);
+            $score=$state['players'][$playerIdx]['score'];
+            $div="<div class='ScoreData Debug ";
+            if($isWinner){
+                $div=$div."Winner";
+            }else{
+                $div=$div."Loser";
+            }
+            $div=$div."'>$score</div>";
+            echo $div;
         }
-        
-        echo 
-            "<div class='TableItem ScoreItem' column-header='Name'>".
-            $player['score'].
-            "</div>";
         
         echo "</div>";
     }
+    function displayCardsColumn($state){
+        echo "<div class='CardsColumn'>";
+        for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
+            $isWinner=isWinner($state,$playerIdx);
+            $div="<div class='CardContainerData Debug ";
+            if($isWinner){
+                $div=$div."Winner";
+            }else{
+                $div=$div."Loser";
+            }
+            $div=$div."'>";
+            echo $div;
+            displayHand($state['players'][$playerIdx]['hand']);
+            
+            echo "</div>";
+        }
+        echo "</div>";
+    }
+    function displayNameColumn($state){
+        echo "<div class='NameColumn'>";
+        for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
+            $isWinner=isWinner($state,$playerIdx);
+            $name=$state['players'][$playerIdx]['name'];
+            $div="<div class='NameData Debug ";
+            if($isWinner){
+                $div=$div."Winner";
+            }else{
+                $div=$div."Loser";
+            }
+            $div=$div."'>$name</div>";
+            echo $div;
+        }
+        
+        echo "</div>";
+        
+    }
     function display(){
         $state=adapt(run());
-        echo "<div class='Table'>";
-        for($playerIdx=0;$playerIdx<4;$playerIdx++){
-            
-            $player=$state['players'][$playerIdx];
-            
-            //Detect winner.
-            $isWinner=false;
-            for($winnerIdx=0;$winnerIdx<sizeof($state['winners']);$winnerIdx++){
-                if($state['winners'][$winnerIdx]==$playerIdx){
-                    $isWinner=true;
-                    break;
-                }
-            }
-            
-            displayPlayer($player,$isWinner);
-            
-        }
+        displayDebugInfo($state);
+        echo "<div class='CardTable Debug'>";
+        displayNameColumn($state);
+        displayCardsColumn($state);
+        displayScoreColumn($state);
         echo "</div>";
     }
 ?>
