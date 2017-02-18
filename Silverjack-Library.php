@@ -54,10 +54,22 @@
         }
         return $state;
     }
+    function randPlayers($state)
+    {
+        for($player = 0; $player < sizeof($state["players"]); $player++)
+        {
+            $randNewPosition = rand(0, 3);
+            $temp = $state["players"][$player];
+            $state["players"][$player] = $state["players"][$randNewPosition];
+            $state["players"][$randNewPosition] = $temp;
+        }
+        return $state;
+    }
     function run() 
     {
         $state = newState();
         $state = dealCards($state);
+        $state = randPlayers($state);
         $state = findWinners($state);
         return $state;
     }
