@@ -3,10 +3,10 @@
     {
         return array(
             "players" => array(
-                array("name" => "Hannah", "score" => 0, "hand" => array()),
-                array("name" => "John", "score" => 0, "hand" => array()),
-                array("name" => "Alex", "score" => 0, "hand" => array()),
-                array("name" => "Johna The Impaler", "score" => 0, "hand" => array())
+                array("name" => "Hannah", "score" => 0, "hand" => array(),"img"=>'1'),
+                array("name" => "John", "score" => 0, "hand" => array(),"img"=>'2'),
+                array("name" => "Alex", "score" => 0, "hand" => array(),"img"=>'3'),
+                array("name" => "Johna The Impaler", "score" => 0, "hand" => array(),"img"=>'4')
             ),
             "winners" => array()
         );
@@ -58,6 +58,7 @@
     {
         //Same effect, but this is shorter and fills our quota of "Array" operations.
         shuffle($state['players']);
+        
         /*
         for($player = 0; $player < sizeof($state["players"]); $player++)
         {
