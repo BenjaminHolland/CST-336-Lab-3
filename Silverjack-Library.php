@@ -56,6 +56,9 @@
     }
     function randPlayers($state)
     {
+        //Same effect, but this is shorter and fills our quota of "Array" operations.
+        shuffle($state['players']);
+        /*
         for($player = 0; $player < sizeof($state["players"]); $player++)
         {
             $randNewPosition = rand(0, 3);
@@ -64,6 +67,7 @@
             $state["players"][$randNewPosition] = $temp;
         }
         return $state;
+        */
     }
     function run() 
     {
