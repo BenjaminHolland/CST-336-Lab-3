@@ -6,6 +6,15 @@
         return $rawState;
     }
     
+    $playerImageLookup=array(
+        '1'=>'1.jpeg',
+        '2'=>'2.jpeg',
+        '3'=>'3.jpeg',
+        '4'=>'4.jpg');
+    function getPlayerImagePath($img){
+        global $playerImageLookup;
+        return $playerImageLookup[$img];
+    }
     function getCardImagePath($card){
         $path="";
         switch(substr($card,0,1)){
@@ -39,11 +48,6 @@
         }
     }
     
-
-    
-    
-    
-    
     function isWinner($state,$playerIdx){
         if(in_array($playerIdx,$state['winners'])){
                 return true;
@@ -62,6 +66,25 @@
         }
     }
     
+    function displayImageColumn($state){
+        echo "<div class='ImageColumn'>";
+        for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
+            $div="<div class='ImageData Debug ";
+            $isWinner=isWinner($state,$playerIdx);
+            if($isWinner){
+                $div=$div."Winner";
+            }else{
+                $div=$div."Loser";
+            }
+            $div=$div."'>";
+            echo $div;
+            $path=getPlayerImagePath($state['players'][$playerIdx]['img']);
+            echo "<img class='ImageData' src='$path'/>";
+            //Image goes here.
+            echo "</div>";
+        }
+        echo "</div>";
+    }
     function displayScoreColumn($state){
         echo "<div class='ScoreColumn'>";
         for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
@@ -120,6 +143,7 @@
         displayDebugInfo($state);
         echo "<div class='CardTable Debug'>";
         displayNameColumn($state);
+        displayImageColumn($state);
         displayCardsColumn($state);
         displayScoreColumn($state);
         echo "</div>";
