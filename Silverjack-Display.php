@@ -11,10 +11,12 @@
         '2'=>'2.jpeg',
         '3'=>'3.jpeg',
         '4'=>'4.jpg');
+    
     function getPlayerImagePath($img){
         global $playerImageLookup;
         return $playerImageLookup[$img];
     }
+    
     function getCardImagePath($card){
         $path="";
         switch(substr($card,0,1)){
@@ -38,6 +40,7 @@
     }
 
     $DISPLAY_DEBUG=false;
+    
     function displayDebugInfo($state){
         global $DISPLAY_DEBUG;
         if($DISPLAY_DEBUG){
@@ -55,6 +58,7 @@
                 return false;
             }
     }
+    
     function displayCard($card){
         $src=getCardImagePath($card);
         echo "<img src='$src'/>";
@@ -85,6 +89,7 @@
         }
         echo "</div>";
     }
+    
     function displayScoreColumn($state){
         echo "<div class='ScoreColumn'>";
         for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
@@ -102,6 +107,7 @@
         
         echo "</div>";
     }
+    
     function displayCardsColumn($state){
         echo "<div class='CardsColumn'>";
         for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
@@ -120,6 +126,7 @@
         }
         echo "</div>";
     }
+    
     function displayNameColumn($state){
         echo "<div class='NameColumn'>";
         for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
@@ -134,10 +141,9 @@
             $div=$div."'>$name</div>";
             echo $div;
         }
-        
         echo "</div>";
-        
     }
+    
     function display(){
         $state=adapt(run());
         displayDebugInfo($state);
