@@ -39,11 +39,6 @@
         }
     }
     
-
-    
-    
-    
-    
     function isWinner($state,$playerIdx){
         if(in_array($playerIdx,$state['winners'])){
                 return true;
@@ -62,6 +57,22 @@
         }
     }
     
+    function displayImageColumn($state){
+        echo "<div class='ImageColumn'>";
+        for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
+            $div="<div class='ImageData Debug ";
+            if($isWinner){
+                $div=$div."Winner";
+            }else{
+                $div=$div."Loser";
+            }
+            $div=$div."'>";
+            echo $div;
+            //Image goes here.
+            echo "</div>";
+        }
+        echo "</div>";
+    }
     function displayScoreColumn($state){
         echo "<div class='ScoreColumn'>";
         for($playerIdx=0;$playerIdx<sizeof($state['players']);$playerIdx++){
