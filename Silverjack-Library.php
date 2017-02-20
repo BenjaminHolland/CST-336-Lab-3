@@ -18,7 +18,7 @@
         for($player = 0; $player < sizeof($state["players"]); $player++) //Runs through every player
         {
             $suits = "CDHS";
-            for($i = 0; $i < rand(4, 6); $i++) //Runs the number of cards every person will recieve
+            while($state["players"][$player]["score"] < 42 && sizeof($state["players"][$player]["hand"]) < 6)
             {
                 //Checks to make sure there are no duplicate cards in players hands
                 do{
