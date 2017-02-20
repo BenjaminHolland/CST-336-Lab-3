@@ -1,11 +1,13 @@
 <?php
+
+//https://www.artstation.com/artwork/orc-32c0b935-867f-4e1e-ab0c-27a063e228af
     function newState()
     {
         return array(
             "players" => array(
-                array("name" => "Hannah", "score" => 0, "hand" => array(),"img"=>'1'),
-                array("name" => "John", "score" => 0, "hand" => array(),"img"=>'2'),
-                array("name" => "Alex", "score" => 0, "hand" => array(),"img"=>'3'),
+                array("name" => "Hannah", "score" => 0, "hand" => array(),"img"=>'3'),
+                array("name" => "John", "score" => 0, "hand" => array(),"img"=>'1'),
+                array("name" => "Alex", "score" => 0, "hand" => array(),"img"=>'2'),
                 array("name" => "Johna The Impaler", "score" => 0, "hand" => array(),"img"=>'4')
             ),
             "winners" => array()
@@ -58,7 +60,7 @@
     {
         //Same effect, but this is shorter and fills our quota of "Array" operations.
         shuffle($state['players']);
-        
+        return $state;
         /*
         for($player = 0; $player < sizeof($state["players"]); $player++)
         {
@@ -76,6 +78,8 @@
         $state = dealCards($state);
         $state = randPlayers($state);
         $state = findWinners($state);
+        
+
         return $state;
     }
 ?>

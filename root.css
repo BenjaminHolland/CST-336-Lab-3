@@ -53,14 +53,17 @@
     justify-content: center;
 }
 
+.ImageData>img{
+    border-radius: 10px;
+}
 .ImageData {
-    border-radius: 0px 10px 10px 0px;
+    
     display: flex;
     flex: 0 1 100px;
     min-width: 50px;
     border-left-style: none;
     padding: 5px;
-    margin: 5px 5px 5px 0px;
+    margin: 5px 0px 5px 0px;
     align-items: center;
     justify-content: center;
 }
