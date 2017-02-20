@@ -15,6 +15,12 @@
     flex-flow: column;
 }
 
+.ImageColumn {
+    display: flex;
+    flex-flow: column;
+}
+
+
 .NameColumn {
     display: flex;
     flex-flow: column;
@@ -36,6 +42,18 @@
 }
 
 .ScoreData {
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    flex: 0 1 100px;
+    min-width: 50px;
+    border-left-style: none;
+    padding: 5px;
+    margin: 5px 5px 5px 0px;
+    align-items: center;
+    justify-content: center;
+}
+
+.ImageData {
     border-radius: 0px 10px 10px 0px;
     display: flex;
     flex: 0 1 100px;
